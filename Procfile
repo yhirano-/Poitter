@@ -1,1 +1,1 @@
-web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true ${JAVA_OPTS}
+web: target/universal/stage/bin/poitter -Dhttp.port=${PORT} -DapplyEvolutions.default=true ${JAVA_OPTS}
