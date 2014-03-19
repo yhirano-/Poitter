@@ -1,0 +1,33 @@
+@(channel_id:String, post_form:Form[Channel], msg_list:List[Channel])
+
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(views.html.SimpleInput.render) } 
+
+@main(Messages("app_name") + " #" + channel_id + " (" + msg_list.size() + ")") {
+<div>
+	<div id="msg-view" style="padding: 0em 1em; overflow-y:auto;">	
+	<h1>#@channel_id (@msg_list.size())</h1>
+	<br>
+	@for(msg <- msg_list) {
+		<div style="color: #999;">@msg.created</div>
+		@msg.body<br>
+		<br>
+	}
+	</div>
+	
+	<table id="post-view">
+	<tr>
+	@form(routes.Channels.post(channel_id)) {
+	<td style="padding: 1em;">
+		<fieldset>
+			@views.html.inputText(post_form("body"), '_label -> "")
+		</fieldset>
+	</td>
+	<td style="padding: 1em;">
+		<button class="btn btn-success" type="submit">@Messages("send")</button>
+	</td>
+	</tr>
+	</table>
+	}
+</div>
+}

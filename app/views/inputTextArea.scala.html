@@ -1,0 +1,5 @@
+@(field: Field, args: (Symbol, Any)*)(implicit handler: helper.FieldConstructor, lang: Lang)
+
+@helper.input.f(field, args.toArray){ (id, name, value, args) =>
+  <textarea id="post-form" class="form-control" id="@id" name="@name" @toHtmlArgs(args) value="@value" />
+  }(handler, lang)

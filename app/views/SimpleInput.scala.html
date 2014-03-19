@@ -1,0 +1,6 @@
+@(elements: helper.FieldElements)
+<div class="form-group @elements.args.get('_class) @if(elements.hasErrors) {error}" style="display: table-cell; vertical-align: middle;">
+        @elements.input
+	@if(elements.errors.length > 0) {<span class="help-inline">@elements.errors(elements.lang).mkString(", ")</span>}
+    @if(elements.infos.length > 0) {<p class="help-block">@elements.infos(elements.lang).mkString(", ")</p>}
+</div>
